@@ -14,14 +14,58 @@ main {
 }
 .page-footer {
     margin-top: 100px;
-
 }
 
-my-table {
-    background-color: red;
-}
 .nav-wraper a,
 .nav-wraper li:focus-visible {
     outline: none;
+}
+
+/* Date picker */
+
+.outer-div {
+    height: 50px;
+    overflow: hidden;
+}
+.inner-div {
+    width: 3000px;
+}
+.outer-div ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.inner-div ul li {
+    float: left;
+    margin: 0 10px;
+    width: 60px;
+    font-size: 16px;
+    text-align: center;
+    /* transition: all 0.5s ease-in-out; */
+    cursor: pointer;
+}
+.day-times .time-line {
+    padding: 16px 0;
+    background-color: #fff;
+    cursor: pointer;
+}
+.day-times {
+    display: none;
+}
+.display-date {
+    font-size: 16px;
+}
+
+.booking {
+    color: green;
+}
+.date-picker:hover {
+    color: indigo;
+        transition: all 0.2s;
+
+}
+.active {
+    color: indigo;
+    font-weight: bold;
 }
 

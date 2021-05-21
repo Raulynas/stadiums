@@ -27,18 +27,22 @@ class StadiumController extends Controller
     public function index()
     {
         $stadiums = Stadium::orderBy("name")->get();
-        return view('stadiums/show', ['stadiums' => $stadiums], ["city" => "All"]);
+        $uniqueCities = DB::table("stadiums")->get()->unique("city");
+        $city = "All";
+
+
+        return view('stadiums/show', ['stadiums' => $stadiums],["city" => $city, "uniqueCites" => $uniqueCities]);
     }
 
     public function show($city)
     {
         $stadiums = DB::table("stadiums")->get();
+        $uniqueCities = DB::table("stadiums")->get()->unique("city");
 
         if (Stadium::where('city', "=", $city)->exists()) {
         } else $city = "All";
 
-
-        return view('stadiums.show', ['stadiums' => $stadiums], ["city" => $city]);
+        return view('stadiums.show', ['stadiums' => $stadiums], ["city" => $city, "uniqueCites" => $uniqueCities]);
     }
 
 
