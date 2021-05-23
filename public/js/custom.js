@@ -17285,6 +17285,17 @@ var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.j
 $(function () {
   var selections = [];
   var bookings = [];
+
+  function updateSelection() {
+    bookings = [];
+    selections = $(".day-times .selected-booking");
+    $.each(selections, function (index, item) {
+      bookings.push([$.trim(item.dataset.city), $.trim(item.dataset.stadium), $.trim(item.dataset.date), $.trim(item.dataset.time)]);
+    });
+    console.log(selections);
+    console.log(bookings);
+  }
+
   $(".input-field").on("change", function () {
     var city = $(".input-field select option:selected").val();
     $(".city-filter").attr("action", "/stadiums/" + city);
@@ -17301,38 +17312,8 @@ $(function () {
     $(".date-line").removeClass("hidden");
   });
   $(".date-picker").on("click", function () {
-    function selectedClassValidation() {
-      var timeLineSelections = $(".booking");
-
-      if (timeLineSelections.length != 0) {
-        $.each(timeLineSelections, function (index, item) {
-          $(this).removeClass("selected-booking");
-          $(this).text("Select");
-          var city = $.trim(item.dataset.city);
-          var stadium = $.trim(item.dataset.stadium);
-          var date = $.trim(item.dataset.date);
-          var time = $.trim(item.dataset.time);
-          $.each(bookings, function (index, item) {
-            if (city == item[0] && stadium == item[1] && date == item[2] && time == item[3]) {
-              console.log(bookings);
-              console.log("asdf");
-              $(this).addClass("selected-booking");
-            }
-          }); // if (city == booking[0], stadium == booking[2],) {
-          //     console.log("equalts ");
-          // }
-        });
-      } // $.each(timeLineSelections, function(item) {
-      //     if (item.dataset.city == "Vilnius") {
-      //         console.log("the same");
-      //     } else {
-      //         console.log("not same");
-      //     }
-      // });
-
-    }
-
-    selectedClassValidation();
+    $(".booking").removeClass("selected-booking").text("Select");
+    updateSelection();
     $(this).addClass("active").siblings().removeClass("active");
     var city = $(this).attr("city-id");
     var stadium = $(this).attr("stadium-id");
@@ -17345,16 +17326,6 @@ $(function () {
     $(".day-times").slideDown(800);
   });
   $(".booking").on("click", function () {
-    bookings = [];
-
-    function updateSelection() {
-      selections = $(".day-times .selected-booking");
-      $.each(selections, function (index, item) {
-        bookings.push([$.trim(item.dataset.city), $.trim(item.dataset.stadium), $.trim(item.dataset.date), $.trim(item.dataset.time)]);
-      }); // console.log(selections);
-      // console.log(bookings);
-    }
-
     if ($(this).hasClass("selected-booking")) {
       $(this).removeClass("selected-booking");
       $(this).text("Select");
@@ -17371,6 +17342,10 @@ $(function () {
       alert("you can select up to 3 time slots.");
     }
   });
+  $(".btn-reg").on("click", function () {
+    $(".test").text(bookings);
+  }); // .attr("action", "/stadiums/" + city);
+  // $(".city-filter").trigger("submit");
 });
 })();
 

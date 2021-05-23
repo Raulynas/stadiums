@@ -55,6 +55,7 @@
                 </div>
             </div>
             <div class="day-times card grey lighten-2 z-depth-1">
+
                 <div class="card-content">
                     @for ($i = 0; $i < 12; $i++) <ul>
                         <li class="time-line row card-title center">
@@ -78,13 +79,24 @@
                         </li>
                         </ul>
 
+
                         @endfor
                         <div class="total-bookings"></div>
+                        <div class="card-action">
+                            <form id="reg-form" action="#">
+                                @csrf
+                                <input type="hidden" id="reg-id" name="reg-id" value="">
+                                <a class="btn btn-reg right" type="submit"><i
+                                        class="material-icons right">send</i>Confirm selection</a>
+                            </form>
+                            <div class="test">sdfsdf
+
+                            </div>
+                        </div>
                 </div>
             </div>
 
         </div>
     </div>
-
 
     @endsection

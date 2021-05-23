@@ -48,7 +48,6 @@ main {
 .day-times .time-line {
     padding-top: 16px;
     background-color: #fff;
-    
 }
 .stadium .selected {
     color: green;
@@ -73,11 +72,10 @@ main {
     color: green;
     cursor: pointer;
 }
-.selected-booking{
+.selected-booking {
     color: green;
     font-weight: bold;
     cursor: pointer;
-
 }
 .date-picker:hover {
     color: indigo;
@@ -86,4 +84,7 @@ main {
 .active {
     color: indigo;
     font-weight: bold;
+}
+.card-action {
+    height: 50px;
 }
