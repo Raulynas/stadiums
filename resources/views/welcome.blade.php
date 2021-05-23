@@ -36,7 +36,7 @@
 
     .title {
         border-bottom: 1.5px solid white;
-        margin-bottom: 100px;
+        margin-bottom: 180px;
     }
 
     .title>h1 {
@@ -53,6 +53,7 @@
         font-size: 18px
     }
 </style>
+
 <body>
     <div class="wrapper ">
         <div class="title white-text">

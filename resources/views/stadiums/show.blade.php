@@ -25,7 +25,7 @@
             <div class="card grey lighten-2 z-depth-1">
                 <div class="stadium card-content">
                     @foreach ($stadiums as $stadium)
-                    <span class="card-title indigo-text">{{$stadium->name}}</span>
+                    <span class="stadium-select card-title indigo-text">{{$stadium->name}}</span>
                     @endforeach
                 </div>
             </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s12">
+        <div class="date-line col s12 hidden" stadium-id="">
             <div class="card grey lighten-2 z-depth-1">
                 <div class="card-content">
                     <div class="outer-div ">
@@ -56,8 +56,8 @@
             </div>
             <div class="day-times card grey lighten-2 z-depth-1">
                 <div class="card-content">
-                    <ul>
-                        @for ($i = 0; $i < 12; $i++) <li class="time-line row card-title center">
+                    @for ($i = 0; $i < 12; $i++) <ul>
+                        <li class="time-line row card-title center">
                             <div class="time col s2 hide-on-med-and-down">
                                 <p class="display-date"></p>
                             </div>
@@ -70,12 +70,16 @@
                                 <span><b>{{ date( "H:i", strtotime( "$startTime+ ". $i + 1 . " hour") ) }}</b></span>
                             </div>
                             <div class="time col s3">
-                                <p class="booking">Book now</p>
+                                <p class="booking" data-city="{{$city}}" data-stadium="" data-date=""
+                                    data-time="{{ date( "H:i", strtotime( "$startTime + $i hour") ) }}">Select</p>
+                                <a class="display-summary"
+                                    style=" height: 16px; font-size: 12px; font-weight: bold">{{$city}}</a>
                             </div>
-                            </li>
-                            @endfor
-                    </ul>
+                        </li>
+                        </ul>
 
+                        @endfor
+                        <div class="total-bookings"></div>
                 </div>
             </div>
 

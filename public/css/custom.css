@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    transition: all 0.5s;
 }
 
 main {
@@ -45,9 +46,21 @@ main {
     cursor: pointer;
 }
 .day-times .time-line {
-    padding: 16px 0;
+    padding-top: 16px;
     background-color: #fff;
+    
+}
+.stadium .selected {
+    color: green;
+    font-family: bold;
+    font-size: 2.2em;
+}
+.stadium:hover {
     cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
 .day-times {
     display: none;
@@ -58,11 +71,17 @@ main {
 
 .booking {
     color: green;
+    cursor: pointer;
+}
+.selected-booking{
+    color: green;
+    font-weight: bold;
+    cursor: pointer;
+
 }
 .date-picker:hover {
     color: indigo;
-        transition: all 0.2s;
-
+    transition: all 0.2s;
 }
 .active {
     color: indigo;

@@ -13,7 +13,7 @@ class StadiumController extends Controller
 
     public function welcome()
     {
-        $stadiums = DB::table("stadiums")->get()->unique("city");
+        $stadiums = DB::table("stadiums")->get()->unique("city")->sortBy("name");
 
         return view('/welcome', ['stadiums' => $stadiums]);
     }
@@ -31,16 +31,19 @@ class StadiumController extends Controller
         $city = "All";
 
 
-        return view('stadiums/show', ['stadiums' => $stadiums],["city" => $city, "uniqueCites" => $uniqueCities]);
+        return view('stadiums/show', ['stadiums' => $stadiums], ["city" => $city, "uniqueCites" => $uniqueCities]);
     }
 
     public function show($city)
     {
-        $stadiums = DB::table("stadiums")->get();
         $uniqueCities = DB::table("stadiums")->get()->unique("city");
 
         if (Stadium::where('city', "=", $city)->exists()) {
-        } else $city = "All";
+            $stadiums = DB::table("stadiums")->get()->where('city', "=", $city);
+        } else {
+            $city = "All";
+            $stadiums = DB::table("stadiums")->get();
+        }
 
         return view('stadiums.show', ['stadiums' => $stadiums], ["city" => $city, "uniqueCites" => $uniqueCities]);
     }
