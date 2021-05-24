@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\StadiumController@welcome');
+Route::get('/', 'App\Http\Controllers\StadiumController@welcome')->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/stadiums', 'App\Http\Controllers\StadiumController@index')->name('stadiums.index');
-Route::get('/stadiums/{city}', 'App\Http\Controllers\StadiumController@show')->name('stadiums.show');
+Route::get('/stadiums/show', 'App\Http\Controllers\StadiumController@index')->name('stadiums.show');
+Route::get('/stadiums/show/{city}', 'App\Http\Controllers\StadiumController@show')->name('stadiums.show');
+Route::post('/stadiums/show/{city}', 'App\Http\Controllers\RegistrationController@store');
 
 Route::group(["middleware" => ["auth"]], function () {
 

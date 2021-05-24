@@ -61,7 +61,6 @@
         </div>
         <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose your City</a>
         <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="{{route("stadiums.show", "All")}}">All Cities</a></li>
             <li><a href="{{route("stadiums.show", "Vilnius")}}">Vilnius</a></li>
             <li><a href="{{route("stadiums.show", "Kaunas")}}">Kaunas</a></li>
             <li class="divider" tabindex="-1"></li>

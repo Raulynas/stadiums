@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Registration;
 use Illuminate\Http\Request;
+// use Illuminate\Http\Auth;
+use Auth;
 
 class RegistrationController extends Controller
 {
@@ -35,7 +37,17 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $test = $request->regId;
+        $registrations = explode(",", $request->regId);
+        foreach ($registrations as  $reg) {
+
+            $registration = new Registration();
+            $registration->user_id = Auth::user()->id;
+            $registration->stadium_id = $request->stadiumId;
+            $registration->registration_date = $reg . ":00";
+            $registration->save();
+        }
+        return redirect()->back();
     }
 
     /**

@@ -45,14 +45,21 @@ main {
     /* transition: all 0.5s ease-in-out; */
     cursor: pointer;
 }
-.day-times .time-line {
-    padding-top: 16px;
+.day-times {
     background-color: #fff;
 }
+.time-line {
+    padding: 12px 0 6px;
+    background-color: #fff;
+}
+.big-card {
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
 .stadium .selected {
-    color: green;
-    font-family: bold;
-    font-size: 2.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 2.0em;
 }
 .stadium:hover {
     cursor: pointer;
@@ -84,8 +91,5 @@ main {
 .active {
     color: indigo;
     font-weight: bold;
-}
-.card-action {
-    height: 50px;
 }
 

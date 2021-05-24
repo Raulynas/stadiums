@@ -16,19 +16,24 @@ $(function() {
         selections = $(".day-times .selected-booking");
         $.each(selections, function(index, item) {
             bookings.push([
-                $.trim(item.dataset.city),
-                $.trim(item.dataset.stadium),
-                $.trim(item.dataset.date),
-                $.trim(item.dataset.time)
+                // $.trim(item.dataset.city),
+                // $.trim(item.dataset.stadium),
+                $.trim(item.dataset.date) + " " + $.trim(item.dataset.time)
             ]);
         });
         console.log(selections);
         console.log(bookings);
+
+        if (bookings.length > 0) {
+            $(".regBtn").removeClass("disabled");
+        } else {
+            $(".regBtn").addClass("disabled");
+        }
     }
 
     $(".input-field").on("change", function() {
         let city = $(".input-field select option:selected").val();
-        $(".city-filter").attr("action", "/stadiums/" + city);
+        $(".city-filter").attr("action", "/stadiums/show/" + city);
         $(".city-filter").trigger("submit");
     });
 
@@ -73,7 +78,6 @@ $(function() {
             $(this).removeClass("selected-booking");
             $(this).text("Select");
             updateSelection();
-            $(".total-bookings").text(selections.length);
             return;
         }
 
@@ -86,8 +90,12 @@ $(function() {
         }
     });
 
-    $(".btn-reg").on("click", function() {
-        $(".test").text(bookings);
+    $(".regBtn").on("click", function() {
+        $("#regId").val(bookings);
+        let selectedStadiumId = $(".stadium .selected").attr("stadium-id");
+        $("#stadiumId").val(selectedStadiumId);
+        console.log(selectedStadiumId);
+        $("#regForm").trigger("submit");
     });
 
     // .attr("action", "/stadiums/" + city);

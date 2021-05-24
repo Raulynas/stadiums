@@ -26,12 +26,13 @@ class StadiumController extends Controller
      */
     public function index()
     {
-        $stadiums = Stadium::orderBy("name")->get();
-        $uniqueCities = DB::table("stadiums")->get()->unique("city");
-        $city = "All";
+        // $stadiums = Stadium::orderBy("name")->get();
+        // $uniqueCities = DB::table("stadiums")->get()->unique("city");
+        // $city = "All";
 
 
-        return view('stadiums/show', ['stadiums' => $stadiums], ["city" => $city, "uniqueCites" => $uniqueCities]);
+        // return view('stadiums/show', ['stadiums' => $stadiums], ["city" => $city, "uniqueCites" => $uniqueCities]);
+        return redirect()->route("welcome");
     }
 
     public function show($city)
@@ -41,8 +42,9 @@ class StadiumController extends Controller
         if (Stadium::where('city', "=", $city)->exists()) {
             $stadiums = DB::table("stadiums")->get()->where('city', "=", $city);
         } else {
-            $city = "All";
-            $stadiums = DB::table("stadiums")->get();
+            // $city = "All";
+            // $stadiums = DB::table("stadiums")->get();
+            return redirect()->route("welcome");
         }
 
         return view('stadiums.show', ['stadiums' => $stadiums], ["city" => $city, "uniqueCites" => $uniqueCities]);
@@ -89,7 +91,6 @@ class StadiumController extends Controller
                 'address' => ['required', 'string', "min:4", 'max:60'],
                 'city' => ['required', 'string', "min:4", 'max:30'],
             ]
-
 
         );
         if ($validator->fails()) {
