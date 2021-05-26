@@ -99,8 +99,8 @@ class StadiumController extends Controller
         }
 
         $stadium = new Stadium();
-        $stadium->name = ucfirst(strtolower($request->name));
-        $stadium->address = ucfirst(strtolower($request->address));
+        $stadium->name = ucfirst($request->name);
+        $stadium->address = ucfirst($request->address);
         $stadium->city = ucfirst(strtolower($request->city));
         $stadium->save();
         return redirect()->route('stadiums.viewAll')->with("msg", "stadium: \"$stadium->name\" was created successfully");
@@ -121,8 +121,8 @@ class StadiumController extends Controller
      */
     public function update(Request $request, Stadium $stadium)
     {
-        $stadium->name = ucfirst(strtolower($request->name));
-        $stadium->address = ucfirst(strtolower($request->address));
+        $stadium->name = ucfirst($request->name);
+        $stadium->address = ucfirst($request->address);
         $stadium->city = ucfirst(strtolower($request->city));
         $stadium->save();
 

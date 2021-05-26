@@ -16,8 +16,7 @@
         }
     }
 </style>
-<?php dd($user) ?>
-
+{{-- <?php dd($stadiums->registrations) ?> --}}
 <ul id="slide-out" class="sidenav sidenav-fixed">
     <li>
         <div class="user-view">
@@ -40,10 +39,19 @@
             <li class="collection-header">
                 <h4>Your bookings</h4>
             </li>
-            {{-- @foreach ($user->registrations as $registration)
-            <li class="collection-item">Alvin</li>
+            @foreach ($user->registrations as $registration)
+            <li class="collection-item">{{$registration->registration_date}}, {{$registration->stadium->name}}
+            {{-- <form id="destroy-form" action="{{route('/', $stadium->id)}}" method="post">
+                                            @method("DELETE")
+                                            @csrf
+                                            <button style="background-color: transparent; border: none; cursor: pointer;" class="tooltipped"
+                                                data-position="right" data-tooltip="Delete Stadium">
+                                                <i class="material-icons red-text">delete</i>
+                                            </button>
+                                        </form> --}}
+            </li>
 
-            @endforeach --}}
+            @endforeach
         </ul>
     </div>
 </div>
