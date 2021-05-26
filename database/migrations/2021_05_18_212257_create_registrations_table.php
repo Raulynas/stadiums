@@ -37,3 +37,5 @@ class CreateRegistrationsTable extends Migration
         Schema::dropIfExists('registrations');
     }
 }
+// $table->unsignedBigInteger('author_id');
+// $table->foreign('author_id')->references('id')->on('authors');

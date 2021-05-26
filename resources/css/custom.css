@@ -92,3 +92,12 @@ main {
     color: indigo;
     font-weight: bold;
 }
+
+/* account view */
+
+.user-view img{
+    height: 200px;
+}
+.user-view{
+    padding-top: 130px !important;
+}

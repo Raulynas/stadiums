@@ -47,7 +47,7 @@ class RegistrationController extends Controller
             $registration->registration_date = $reg . ":00";
             $registration->save();
         }
-        return redirect()->back();
+        return redirect()->route("user.account", [Auth::user()->id]);
     }
 
     /**

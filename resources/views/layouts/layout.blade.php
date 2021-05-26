@@ -53,6 +53,7 @@
 
                     <li> <a class="dropdown-trigger" href="#" data-target="dropdown2">{{ Auth::user()->name }}</a> </li>
                     <ul id="dropdown2" class="dropdown-content">
+                        <li><a href="{{ route('user.account', [ Auth::user()->id ]) }}">Your account</a></li>
                         <li><a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __("Logout") }}</a>
@@ -161,6 +162,7 @@
                     coverTrigger: false,
                     constrainWidth: false,
                 })
+                $('.sidenav').sidenav();
 
 
             });

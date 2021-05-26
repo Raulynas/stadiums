@@ -22,9 +22,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/stadiums', 'App\Http\Controllers\StadiumController@index')->name('stadiums.index');
 Route::get('/stadiums/show', 'App\Http\Controllers\StadiumController@index')->name('stadiums.show');
 Route::get('/stadiums/show/{city}', 'App\Http\Controllers\StadiumController@show')->name('stadiums.show');
-Route::post('/stadiums/show/{city}', 'App\Http\Controllers\RegistrationController@store');
 
 Route::group(["middleware" => ["auth"]], function () {
+    Route::post('/stadiums/show/{city}', 'App\Http\Controllers\RegistrationController@store');
+    Route::get('/user/account/{user}', 'App\Http\Controllers\UserController@account')->name("user.account");
 
     Route::get('/stadiums/viewAll', 'App\Http\Controllers\StadiumController@viewAll')->name('stadiums.viewAll');
     Route::get('/stadiums/edit/{stadium}', 'App\Http\Controllers\StadiumController@edit')->name('stadiums.edit');
